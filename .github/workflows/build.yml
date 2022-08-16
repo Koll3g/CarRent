@@ -47,5 +47,5 @@ jobs:
           & dotnet restore .\source\CarRent.sln
           & dotnet build .\source\CarRent.sln
           & dotnet test .\source\CarRent.sln
-          & dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml' 
+          dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml' 
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
