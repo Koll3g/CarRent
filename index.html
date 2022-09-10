@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>CarRent</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">CarRent</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#carrent" class="nav-link">CarRent</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#einfuhrung-und-ziele" class="nav-link">Einführung und Ziele</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#randbedingungen" class="nav-link">Randbedingungen</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#kontextabgrenzung" class="nav-link">Kontextabgrenzung</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#losungsstrategie" class="nav-link">Lösungsstrategie</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#bausteinsicht" class="nav-link">Bausteinsicht</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#domain-model" class="nav-link">Domain Model</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#whitebox-gesamtsystem" class="nav-link">Whitebox Gesamtsystem</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#verteilungssicht" class="nav-link">Verteilungssicht</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#querschnittliche-konzepte" class="nav-link">Querschnittliche Konzepte</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#entwurfsentscheidungen" class="nav-link">Entwurfsentscheidungen</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#qualitatsanforderungen" class="nav-link">Qualitätsanforderungen</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="carrent">CarRent</h1>
+<h2 id="einfuhrung-und-ziele">Einführung und Ziele</h2>
+<h3 id="aufgabenstellung">Aufgabenstellung</h3>
+<p>Es soll ein neues Autovermietungssystem „CarRent“ erstellt werden. Das System soll aus einem Server-Teil und
+optional einen Web-Client bestehen. </p>
+<p>Folgende Detailinformationen liegen unstrukturiert über das zu entwickelnde System vor:
+- Der Sachbearbeiter kann Kunden mit Namen und Adresse und Kundennummer im System verwalten,
+d.h. erfassen, bearbeiten, löschen und den Kunden mit dessen Namen oder Kundennummer suchen.
+- Der Sachbearbeiter kann zudem die Autos von CarRent verwalten und nach denen suchen.
+- Jedes Auto kann einer bestimmten Klasse zwischen Luxusklasse, Mittelklasse oder Einfachklasse
+zugeordnet werden und besitzt zudem eine Marke, einen Typ und eine eindeutige Identifikation.
+- Jede Klasse besitzt eine Tagesgebühr.
+- Bei einer neuen Reservation kann der Kunde ein Auto aus einer bestimmten Klasse wählen. Er muss
+zudem die Anzahl der Tage angeben, die er das Auto gerne mieten möchte. Dabei werden die
+Gesamtkosten berechnet. Wird die Reservation gespeichert, so wird sie mit einer Reservationsnummer
+ablegt.
+- Bei Abholung des Autos wird die Reservation in einen Mietvertrag umgewandelt.</p>
+<h3 id="use-cases">Use Cases</h3>
+<h4 id="uc-01-crud-search-customers">UC 01: CRUD &amp; Search Customers</h4>
+<p>Der Sachbearbeiter verwaltet Kunden im System (CRUD).</p>
+<h4 id="uc-02-search-customers">UC 02: Search Customers</h4>
+<p>Der Sachbearbeiter sucht und findet Kunden im System mittels Kundennummer oder dessen Namen.</p>
+<h4 id="uc-03-crud-cars">UC 03: CRUD Cars</h4>
+<p>Der Sachbearbeiter verwaltet Fahrzeuge im System (CRUD). Der Sachbearbeiter kann Fahrzeuge einer bestimmten Klasse (Luxusklasse, Mittelklasse, Einfachklasse), Marke, Typ und eindeutiger ID zuweisen.</p>
+<h4 id="uc-04-search-cars">UC 04: Search Cars</h4>
+<p>Der Sachbearbeiter sucht und findet Fahrzeuge im System mittels derer ID.</p>
+<h4 id="uc-05-daily-fee">UC 05: Daily Fee</h4>
+<p>Der Sachbearbeiter kann der Fahrzeugklasse eine Tagesgebühr zuweisen.</p>
+<h4 id="uc-06-reservation">UC 06: Reservation</h4>
+<p>Der Kunde kann eine Reservation auf eine bestimmte Fahrzeugklasse mit einer bestimmten Anzahl Tage erstellen. Die Gesamtkosten werden vom System automatisch berechnet. Beim Speichern der Reservation wird durch das System eine Reservationsnummer vergeben.</p>
+<h4 id="uc-07-contract-creation">UC 07: Contract creation</h4>
+<p>Das System erstellt einen Mietvertrag basierend auf der Reservation, sobald der Kunde das Fahrzeug abholt.</p>
+<h3 id="qualitatsziele">Qualitätsziele</h3>
+<table>
+<thead>
+<tr>
+<th>Priorität</th>
+<th align="center">Qualitätsziel</th>
+<th align="center">Szenario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td align="center">Perfomante User Experience</td>
+<td align="center">Interaktion mit Webseite</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center">Data Consistency</td>
+<td align="center">Ausfall von Server darf nicht zu Datenverlust führen</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center">System availability</td>
+<td align="center">Auch bei Ausfall eines Servers soll System innerhalb von 2 Minuten wieder verfügbar sein</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stakeholder">Stakeholder</h3>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th align="center">Kontakt</th>
+<th align="center">Erwartungshaltung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lehrperson</td>
+<td align="center">Cedric Menzi</td>
+<td align="center">Dokumentation nach arc42</td>
+</tr>
+</tbody>
+</table>
+<h2 id="randbedingungen">Randbedingungen</h2>
+<ul>
+<li>Die Daten sollen mittels Repository Pattern in eine Datenbank gespeichert werden können.</li>
+<li>Die Business Logik soll auf dem Backend laufen und eine REST APIs anbieten.</li>
+<li>Es soll zuerst ein Monolith erstellt werden und später auf eine Micro Service Architektur überführt werden</li>
+</ul>
+<h2 id="kontextabgrenzung">Kontextabgrenzung</h2>
+<ul>
+<li>Login und Authentifizierung von Kunden und Sachbearbeitern wird in diesem Projekt ausgeblendet</li>
+<li>Die Implementierung des Persistence Layers wird in einem späteren Zeitpunkt durchgeführt </li>
+</ul>
+<h3 id="technischer-kontext">Technischer Kontext</h3>
+<h2 id="losungsstrategie">Lösungsstrategie</h2>
+<ul>
+<li>Implementierung des Repository Patterns</li>
+<li>Trennung des Persistence und Business Layers über Interfaces</li>
+<li>Trennung des API und Business Layers</li>
+<li>Zugriff über REST APIs</li>
+<li>Design als Monolith, aber schon vorbereitet, um in eine Micro Service Architektur überführt zu werden</li>
+<li>Domain Driven Design</li>
+</ul>
+<h2 id="bausteinsicht">Bausteinsicht</h2>
+<h3 id="context">Context</h3>
+<p><img alt="Context Diagram" src="media/Context.PNG" /></p>
+<h3 id="containers">Containers</h3>
+<p><img alt="Containers Diagram" src="media/Containers.PNG" /></p>
+<h3 id="components">Components</h3>
+<p><img alt="Components Diagram" src="media/Components.PNG" /></p>
+<h3 id="classes">Classes</h3>
+<p><img alt="Class Diagram" src="media/Classes.PNG" /></p>
+<h2 id="domain-model">Domain Model</h2>
+<p><img alt="Domain Model" src="media/DomainModel.PNG" /></p>
+<h2 id="whitebox-gesamtsystem">Whitebox Gesamtsystem</h2>
+<h3 id="class-diagram">Class Diagram</h3>
+<p><img alt="Class Diagram" src="media/ClassDiagram.PNG" /></p>
+<h3 id="component-diagram-interfaces">Component Diagram - Interfaces</h3>
+<p><img alt="Component Diagram" src="media/ComponentDiagram.PNG" /></p>
+<h2 id="verteilungssicht">Verteilungssicht</h2>
+<h3 id="deployement-view">Deployement View</h3>
+<p><img alt="Deployment View" src="media/DeploymentView.PNG" /></p>
+<h2 id="querschnittliche-konzepte">Querschnittliche Konzepte</h2>
+<h2 id="entwurfsentscheidungen">Entwurfsentscheidungen</h2>
+<h2 id="qualitatsanforderungen">Qualitätsanforderungen</h2></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.3.1
+Build Date UTC : 2022-09-10 17:55:54.663085+00:00
+-->
