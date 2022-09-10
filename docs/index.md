@@ -19,7 +19,6 @@ Gesamtkosten berechnet. Wird die Reservation gespeichert, so wird sie mit einer 
 ablegt.
 - Bei Abholung des Autos wird die Reservation in einen Mietvertrag umgewandelt.
 
-### Use Cases
 #### UC 01: CRUD & Search Customers
 Der Sachbearbeiter verwaltet Kunden im System (CRUD).
 
