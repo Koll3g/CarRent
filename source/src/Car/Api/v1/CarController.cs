@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using CarRent.Car.Application;
+using CarRent.Car.Persistence;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,17 +14,12 @@ namespace CarRent.Car.Api.v1
         [HttpGet]
         public IEnumerable<CarResponseDto> Get()
         {
-            return new CarResponseDto[]
+            var carApplication = new CarApplication(new CarRepository());
+            var cars = carApplication.GetAll();
+            foreach (var car in cars)
             {
-                new CarResponseDto
-                {
-                    Id = Guid.NewGuid(),
-                    CarNumber = "XW82",
-                    Brand = "Audi",
-                    Type = "SUV",
-                    CarClass = "Luxury"
-                }
-            };
+                yield return new CarResponseDto(car);
+            }
         }
 
         // GET api/<CarController>/5

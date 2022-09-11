@@ -6,7 +6,7 @@
 
         Car GetByCarNumber(string carNumber);
 
-        // ...
+        IEnumerable<Car> GetAll();
 
         void Add(Car car);
 

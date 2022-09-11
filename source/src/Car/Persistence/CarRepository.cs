@@ -28,5 +28,10 @@ namespace CarRent.Car.Persistence
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Domain.Car> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -6,7 +6,6 @@ namespace CarRent.Car.Api.v1
     {
         public Guid Id { get; set; }
 
-        [JsonPropertyName("car-number")]
         public string CarNumber { get; set; }
 
         public string Brand { get; set; }
@@ -14,5 +13,14 @@ namespace CarRent.Car.Api.v1
         public string CarClass { get; set; }
 
         public string Type { get; set; }
+
+        public CarResponseDto(Domain.Car car)
+        {
+            Id = car.Id;
+            CarNumber = car.CarNumber;
+            Brand = car.Brand.Name;
+            CarClass = car.CarClass.Name;
+            Type = car.Type.Name;
+        }
     }
 }
