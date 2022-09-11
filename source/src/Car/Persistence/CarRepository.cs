@@ -6,7 +6,9 @@ namespace CarRent.Car.Persistence
     {
         public void Add(Domain.Car car)
         {
-            throw new NotImplementedException();
+            using var context = new CarContext();
+            context.Cars.Add(car);
+            context.SaveChanges();
         }
 
         public Domain.Car GetByCarNumber(string carNumber)

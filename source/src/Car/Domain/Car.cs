@@ -2,15 +2,15 @@
 {
     public class Car
     {
-        public Guid Id { get; }
+        public Guid Id { get; set; }
 
-        public string CarNumber { get; }
+        public string CarNumber { get; set; }
 
-        public Brand Brand { get; }
+        public Brand Brand { get; set; }
 
-        public Type Type { get; }
+        public Type Type { get; set; }
 
-        public CarClass CarClass { get; }
+        public CarClass CarClass { get; set; }
 
     }
 }

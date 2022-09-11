@@ -39,6 +39,15 @@ namespace CarRent.Car.Api.v1
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            new CarRepository().Add(new Domain.Car()
+            {
+                Id = new Guid(),
+                CarNumber = "123456",
+                Type = new Domain.Type(new Guid(), "type"),
+                Brand = new Domain.Brand(new Guid(), "brand"),
+                CarClass = new Domain.CarClass(new Guid(), "class")
+            }) ;
+
         }
 
         // DELETE api/<CarController>/5
