@@ -33,9 +33,9 @@ namespace CarRent.Rent.Domain
             }
         }
 
-        public void CreateAndAssignContract(DateTime pickUpDateTime)
+        public void CreateAndAssignContract(DateTime pickUpDateTime, Car.Domain.Car car)
         {
-            Contract = new Contract(new Guid(), pickUpDateTime);
+            Contract = new Contract(new Guid(), pickUpDateTime, car);
         }
 
         public Reservation(ReservationResponseDto reservation) : base(reservation.Id)

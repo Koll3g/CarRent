@@ -57,10 +57,10 @@ namespace CarRent.Rent.Api.v1
 
         // PUT api/<RentController>/5
         [HttpPut("{createContract}")]
-        public void Put([FromBody] ReservationResponseDto reservationResponseDto, DateTime pickUpDate)
+        public void Put([FromBody] ReservationResponseDto reservationResponseDto, DateTime pickUpDate, Car.Domain.Car car)
         {
             var reservation = new Reservation(reservationResponseDto);
-            reservation.CreateAndAssignContract(pickUpDate);
+            reservation.CreateAndAssignContract(pickUpDate, car);
             _repository.Update(reservation);
         }
     }

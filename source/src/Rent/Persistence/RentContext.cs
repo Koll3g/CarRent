@@ -27,8 +27,10 @@ namespace CarRent.Rent.Persistence
             var contract = modelBuilder.Entity<Contract>();
             contract.HasKey(x => x.Id);
             contract.Property(x => x.PickUpDate);
+            contract.HasOne(x => x.Car);
 
             reservation.Navigation(x => x.Contract).AutoInclude();
+            contract.Navigation(x => x.Car).AutoInclude();
 
             base.OnModelCreating(modelBuilder);
         }
