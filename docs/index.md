@@ -59,14 +59,10 @@ Das System erstellt einen Mietvertrag basierend auf der Reservation, sobald der 
 
 ## Kontextabgrenzung
 - Login und Authentifizierung von Kunden und Sachbearbeitern wird in diesem Projekt ausgeblendet
-- Die Implementierung des Persistence Layers wird in einem späteren Zeitpunkt durchgeführt 
-
-### Technischer Kontext
 
 ## Lösungsstrategie
 - Implementierung des Repository Patterns
 - Trennung des Persistence und Business Layers über Interfaces
-- Trennung des API und Business Layers
 - Zugriff über REST APIs
 - Design als Monolith, aber schon vorbereitet, um in eine Micro Service Architektur überführt zu werden
 - Domain Driven Design
@@ -98,10 +94,5 @@ Das System erstellt einen Mietvertrag basierend auf der Reservation, sobald der 
 ### Deployement View
 ![Deployment View](media/DeploymentView.PNG)
 
-## Querschnittliche Konzepte
-
-## Entwurfsentscheidungen
-
-## Qualitätsanforderungen
 
 
