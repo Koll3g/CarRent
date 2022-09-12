@@ -11,5 +11,6 @@ namespace CarRent.Car.Domain
 
         }
 
+        public decimal DailyFee { get; set; }
     }
 }
