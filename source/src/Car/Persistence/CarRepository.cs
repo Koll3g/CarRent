@@ -38,13 +38,13 @@ namespace CarRent.Car.Persistence
 
         public void Remove(Domain.Car car)
         {
-            _carContext.Remove(car);
+            _carContext.Cars.Remove(car);
             _carContext.SaveChanges();
         }
 
         public void Update(Domain.Car car)
         {
-            _carContext.Update(car);
+            _carContext.Cars.Update(car);
             _carContext.SaveChanges();
         }
     }

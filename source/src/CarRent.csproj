@@ -24,10 +24,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Customer\Api\v1\" />
-    <Folder Include="Customer\Domain\" />
-    <Folder Include="Customer\Persistence\" />
-  </ItemGroup>
-
 </Project>
