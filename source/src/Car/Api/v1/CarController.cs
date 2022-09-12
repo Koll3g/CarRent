@@ -1,59 +1,62 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using CarRent.Car.Application;
 using CarRent.Car.Persistence;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CarRent.Car.Api.v1
 {
+    using CarRent.Car.Domain;
+
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("api/v1/car")]
     [ApiController]
     public class CarController : ControllerBase
     {
+        private readonly ICarRepository _repository;
+
+        public CarController(ICarRepository repository)
+        {
+            _repository = repository;
+        }
+
         // GET: api/<CarController>
         [HttpGet]
-        public IEnumerable<CarResponseDto> Get()
+        public IActionResult Get()
         {
-            var carApplication = new CarApplication(new CarRepository());
-            var cars = carApplication.GetAll();
-            foreach (var car in cars)
-            {
-                yield return new CarResponseDto(car);
-            }
+            var cars = _repository.GetAll();
+            var carDtos = cars.Select(c => new CarResponseDto(c));
+            return Ok(carDtos);
         }
 
         // GET api/<CarController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(string id)
         {
-            return "value";
+            var car = _repository.GetById(new Guid(id));
+            return Ok(car);
         }
 
         // POST api/<CarController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] CarResponseDto carResponseDto)
         {
+            _repository.Add(new Car(carResponseDto));
+            return Ok();
         }
 
         // PUT api/<CarController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{car}")]
+        public void Put([FromBody] CarResponseDto carResponseDto)
         {
-            new CarRepository().Add(new Domain.Car()
-            {
-                Id = new Guid(),
-                CarNumber = "123456",
-                Type = new Domain.Type(new Guid(), "type"),
-                Brand = new Domain.Brand(new Guid(), "brand"),
-                CarClass = new Domain.CarClass(new Guid(), "class")
-            }) ;
-
+            _repository.Update(new Car(carResponseDto));
         }
 
         // DELETE api/<CarController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{car}")]
+        public void Delete([FromBody] CarResponseDto carResponseDto)
         {
+            _repository.Remove(new Car(carResponseDto));
         }
     }
 }

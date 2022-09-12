@@ -1,39 +1,51 @@
 ﻿using CarRent.Car.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRent.Car.Persistence
 {
     public class CarRepository : ICarRepository
     {
+        //private readonly List<Car> _cars;
+        private readonly CarContext _carContext;
+
+        public CarRepository(CarContext carContext)
+        {
+            _carContext = carContext;
+        }
+
         public void Add(Domain.Car car)
         {
-            using var context = new CarContext();
-            context.Cars.Add(car);
-            context.SaveChanges();
-        }
-
-        public Domain.Car GetByCarNumber(string carNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Domain.Car GetById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Domain.Car car)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Domain.Car car)
-        {
-            throw new NotImplementedException();
+            _carContext.Cars.Add(car);
+            _carContext.SaveChanges();
         }
 
         public IEnumerable<Domain.Car> GetAll()
         {
-            throw new NotImplementedException();
+            return _carContext.Cars.ToList();
+        }
+
+        public Domain.Car GetByCarNumber(string carNumber)
+        {
+            var car = _carContext.Cars.First(x => x.CarNumber == carNumber);
+            return car;
+        }
+
+        public Domain.Car GetById(Guid id)
+        {
+            var car = _carContext.Cars.Find(id);
+            return car;
+        }
+
+        public void Remove(Domain.Car car)
+        {
+            _carContext.Remove(car);
+            _carContext.SaveChanges();
+        }
+
+        public void Update(Domain.Car car)
+        {
+            _carContext.Update(car);
+            _carContext.SaveChanges();
         }
     }
 }

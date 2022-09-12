@@ -6,17 +6,11 @@ namespace CarRent.Car.Persistence
 {
     public class CarContext : DbContext
     {
-        public virtual DbSet<Domain.Car> Cars { get; set; }
+        public DbSet<Domain.Car> Cars { get; set; }
         
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public CarContext(DbContextOptions<CarContext> options) : base(options)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                string connection = @"Server=KOLLEG-MPC\ZBW;Database=Cars;Trusted_Connection=True;";
-
-                optionsBuilder.UseSqlServer(connection);
-                optionsBuilder.LogTo(Console.WriteLine);
-            }
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,6 +37,8 @@ namespace CarRent.Car.Persistence
             car.Navigation(x => x.Brand).AutoInclude();
             car.Navigation(x => x.Type).AutoInclude();
             car.Navigation(x => x.CarClass).AutoInclude();
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
