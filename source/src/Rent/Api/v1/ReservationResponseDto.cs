@@ -28,5 +28,7 @@ namespace CarRent.Rent.Api.v1
             DesiredCarClass = reservation.DesiredCarClass.Id;
             StartDate = reservation.StartDate;
         }
+
+        public ReservationResponseDto(){}
     }
 }

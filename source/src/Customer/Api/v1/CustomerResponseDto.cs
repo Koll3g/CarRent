@@ -20,5 +20,7 @@
             Street = customer.Street;
             City = customer.City;
         }
+
+        public CustomerResponseDto() { }
     }
 }

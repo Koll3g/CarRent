@@ -18,9 +18,11 @@ namespace CarRent.Car.Api.v1
         {
             Id = car.Id;
             CarNumber = car.CarNumber;
-            Brand = car.Brand.Name;
-            CarClass = car.CarClass.Name;
-            Type = car.Type.Name;
+            Brand = car.Brand.Id.ToString();
+            CarClass = car.CarClass.Id.ToString();
+            Type = car.Type.Id.ToString();
         }
+
+        public CarResponseDto() { }
     }
 }
